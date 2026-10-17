@@ -14,7 +14,7 @@ export function Logo({ light = false }: { light?: boolean }) {
         width={635}
         height={288}
         priority
-        className={`h-auto ${light ? "w-[188px]" : "w-[182px] sm:w-[210px]"}`}
+        className={light ? "h-auto w-[188px]" : "h-[72px] w-auto sm:h-[78px]"}
       />
     </Link>
   );

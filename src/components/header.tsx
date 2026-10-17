@@ -12,7 +12,7 @@ export function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 border-b border-black/10 bg-white">
+    <header className="sticky top-0 z-50 overflow-hidden border-b border-black/10 bg-white">
       <div className="container-shell flex h-[88px] items-center justify-between gap-6">
         <Logo />
         <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary navigation">

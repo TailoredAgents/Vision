@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowDown, ArrowRight, Building2, Compass, LineChart } from "lucide-react";
+import { ArrowDown, ArrowRight, Building2, Compass, LineChart, MapPin } from "lucide-react";
 import { CtaBand } from "@/components/cta-band";
 import { SectionHeading } from "@/components/section-heading";
-import { assetExperience } from "@/lib/experience";
+import { propertyFixtures } from "@/lib/properties";
 import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -20,6 +20,7 @@ const services = [
 ] as const;
 
 export default function Home() {
+  const featured = propertyFixtures.filter((property) => property.featured);
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "RealEstateAgent",
@@ -91,21 +92,21 @@ export default function Home() {
 
       <section className="section overflow-hidden bg-ivory">
         <div className="container-shell">
-          <div className="grid gap-8 md:grid-cols-[1.25fr_.75fr] md:items-end">
-            <div><p className="eyebrow">Representative experience</p><h2 className="display mt-7 max-w-4xl text-[clamp(3rem,6vw,5.8rem)]">Experience across the assets that shape the decision.</h2></div>
-            <div className="md:pb-2"><p className="max-w-lg text-[.98rem] leading-7 text-muted">Vision advises across a range of commercial property types. These are areas of experience—not representations of active listings.</p><Link href="/properties" className="mt-6 inline-flex items-center gap-2 border-b border-bronze pb-1 text-[.76rem] font-bold uppercase tracking-[.12em]">Explore property capabilities <ArrowRight size={15} /></Link></div>
+          <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
+            <div><p className="eyebrow">Selected opportunities</p><h2 className="display mt-7 text-[clamp(3rem,6vw,5.8rem)]">A sharper way to explore the market.</h2></div>
+            <Link href="/properties" className="button button-outline w-fit">View all properties <ArrowRight size={16} /></Link>
           </div>
-          <div className="mt-12 grid gap-8 lg:grid-cols-3">
-            {assetExperience.map((item) => (
-              <article key={item.title} className="group">
-                <div className="relative aspect-[16/11] overflow-hidden bg-stone"><Image src={item.image} alt={`${item.title} commercial real estate`} fill sizes="(min-width:1024px) 33vw, 100vw" className="object-cover transition duration-500 group-hover:scale-[1.025]" /><div className="absolute inset-x-0 bottom-0 h-1 bg-bronze" /></div>
-                <div className="border-b hairline py-6">
-                  <p className="text-[.72rem] font-bold uppercase tracking-[.13em] text-bronze">{item.label}</p>
-                  <h3 className="mt-3 font-[family-name:var(--font-display)] text-[2rem] font-medium leading-tight">{item.title}</h3>
-                  <p className="mt-4 text-[.95rem] leading-7 text-muted">{item.description}</p>
-                  <Link href={item.href} className="mt-5 inline-flex items-center gap-2 text-[.75rem] font-bold uppercase tracking-[.1em] text-forest">How we advise <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" /></Link>
+          <p className="mt-5 max-w-2xl text-[.95rem] leading-7 text-muted">The properties shown in this website demonstration are illustrative—not active listings. The system is ready to connect to an approved live listing source.</p>
+          <div className="mt-12 grid gap-6 lg:grid-cols-3">
+            {featured.map((property, index) => (
+              <Link href={`/properties/${property.slug}`} key={property.slug} className={`group ${index === 1 ? "lg:mt-16" : ""}`}>
+                <div className="relative aspect-[4/3] overflow-hidden bg-stone"><Image src={property.image} alt="Illustrative commercial property photography" fill sizes="(min-width:1024px) 33vw, 100vw" className="object-cover transition duration-500 group-hover:scale-[1.03]" /><span className="absolute left-4 top-4 bg-forest px-3 py-1.5 text-[.66rem] font-bold uppercase tracking-[.12em] text-white">Illustrative</span></div>
+                <div className="border-b hairline py-5">
+                  <div className="flex justify-between gap-4"><p className="text-[.72rem] font-bold uppercase tracking-[.12em] text-bronze">{property.offering} · {property.type}</p><span className="text-[.72rem] text-muted">{property.size}</span></div>
+                  <h3 className="mt-3 font-[family-name:var(--font-display)] text-3xl font-medium leading-none">{property.title}</h3>
+                  <p className="mt-3 flex items-center gap-2 text-[.92rem] text-muted"><MapPin size={14} />{property.address}</p>
                 </div>
-              </article>
+              </Link>
             ))}
           </div>
         </div>
@@ -113,10 +114,7 @@ export default function Home() {
 
       <section className="section bg-paper">
         <div className="container-shell grid gap-12 lg:grid-cols-[.9fr_1.1fr] lg:items-center">
-          <figure>
-            <div className="relative min-h-[500px] overflow-hidden bg-stone"><Image src="/images/woodstock-downtown.jpg" alt="Mixed-use buildings in downtown Woodstock, Georgia" fill sizes="(min-width:1024px) 50vw, 100vw" className="object-cover object-center" /><div className="absolute inset-0 bg-forest/8" /><p className="absolute bottom-0 left-0 bg-forest px-5 py-4 text-[.72rem] font-bold uppercase tracking-[.13em] text-bronze-light">Downtown Woodstock · Georgia</p></div>
-            <figcaption className="mt-3 text-xs text-muted">Downtown Woodstock photograph: Thomson200, CC0/Wikimedia Commons.</figcaption>
-          </figure>
+          <div className="relative min-h-[480px] overflow-hidden bg-stone"><Image src="/images/atlanta-aerial.jpg" alt="Aerial view of Atlanta, Georgia" fill sizes="(min-width:1024px) 50vw, 100vw" className="object-cover" /><div className="absolute inset-0 bg-forest/15" /><p className="absolute bottom-0 left-0 bg-forest px-5 py-4 text-[.72rem] font-bold uppercase tracking-[.13em] text-bronze-light">Woodstock · North Metro · Atlanta</p></div>
           <div className="lg:pl-10">
             <p className="eyebrow">A local point of view</p>
             <h2 className="display mt-7 text-[clamp(3rem,6vw,5.8rem)]">Rooted here. Useful well beyond it.</h2>

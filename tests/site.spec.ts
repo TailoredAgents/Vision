@@ -30,12 +30,13 @@ test("home imagery loads as the page is explored", async ({ page }) => {
   expect(failed).toEqual([]);
 });
 
-test("properties page avoids presenting demonstration inventory as live", async ({ page }) => {
+test("property explorer filters without inventing live status", async ({ page }) => {
   await page.goto("/properties");
-  await expect(page.getByRole("heading", { name: "Ask what is active now." })).toBeVisible();
-  await expect(page.getByText(/Current availability changes/)).toBeVisible();
-  await expect(page.getByText("Representative experience")).toBeVisible();
-  await expect(page.getByText("$1,425,000")).toHaveCount(0);
+  await expect(page.getByText("8 illustrative properties")).toBeVisible();
+  await page.locator("select").first().selectOption("Industrial");
+  await expect(page.getByText("2 illustrative properties")).toBeVisible();
+  await expect(page.getByText("North Georgia Logistics Center")).toBeVisible();
+  await expect(page.getByText("I-575 Commerce Park")).toBeVisible();
 });
 
 test("admin pages redirect unauthenticated visitors", async ({ page }) => {
