@@ -2,14 +2,14 @@ databases:
   - name: vision-commercial-db
     databaseName: vision_commercial
     user: vision_app
-    plan: 0.1c-256mb
+    plan: 0.1c-256mb # Paid Postgres plan; billed separately from the web service.
     region: virginia
 
 services:
   - type: web
     name: vision-commercial-advisors
     runtime: node
-    plan: 0.5c-512mb
+    plan: starter # Paid Starter web service tier ($7/month at time of configuration).
     region: virginia
     buildCommand: npm ci && npm run build
     preDeployCommand: npm run db:migrate
