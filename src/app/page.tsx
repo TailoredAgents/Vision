@@ -35,22 +35,22 @@ export default function Home() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }} />
-      <section className="relative isolate min-h-[calc(100svh-88px)] overflow-hidden bg-forest text-white">
-        <Image src="/images/vision-hero-grounded.png" alt="Illustrative established brick professional building in a wooded North Georgia setting" fill priority sizes="100vw" className="object-cover object-[62%_center]" />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(12,25,19,.94)_0%,rgba(12,25,19,.8)_38%,rgba(12,25,19,.24)_74%,rgba(12,25,19,.1)_100%)]" />
-        <div className="container-shell relative flex min-h-[calc(100svh-88px)] flex-col justify-between py-10 md:py-14">
-          <p className="max-w-md text-[.78rem] font-bold uppercase tracking-[.17em] text-bronze-light">Woodstock, Georgia · Serving Metro Atlanta</p>
-          <div className="max-w-[820px] py-14">
-            <h1 className="display max-w-[760px] text-[clamp(3.2rem,7vw,6.6rem)]">Commercial real estate decisions,<br /><span className="text-bronze-light">made clearer.</span></h1>
-            <p className="mt-7 max-w-xl text-[1.05rem] leading-8 text-white/80 md:text-lg">Independent guidance for owners, investors, tenants, and buyers navigating consequential real estate decisions across North Metro Atlanta and beyond.</p>
+      <section className="relative isolate min-h-[680px] overflow-hidden bg-forest text-white md:min-h-[calc(100svh-88px)]">
+        <Image src="/images/vision-hero-grounded.png" alt="Illustrative established brick professional building in a wooded North Georgia setting" fill priority sizes="100vw" className="object-cover object-[72%_center] md:object-[62%_center]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(12,25,19,.7)_0%,rgba(12,25,19,.78)_42%,rgba(12,25,19,.97)_100%)] md:bg-[linear-gradient(90deg,rgba(12,25,19,.94)_0%,rgba(12,25,19,.8)_38%,rgba(12,25,19,.24)_74%,rgba(12,25,19,.1)_100%)]" />
+        <div className="container-shell relative flex min-h-[680px] flex-col py-8 md:min-h-[calc(100svh-88px)] md:justify-between md:py-14">
+          <p className="max-w-md text-[.72rem] font-bold uppercase tracking-[.16em] text-bronze-light md:text-[.78rem] md:tracking-[.17em]"><span className="md:hidden">Woodstock, Georgia</span><span className="hidden md:inline">Woodstock, Georgia · Serving Metro Atlanta</span></p>
+          <div className="mt-auto max-w-[820px] pb-7 pt-16 md:py-14">
+            <h1 className="display max-w-[350px] text-[clamp(2.8rem,11.5vw,3.2rem)] md:max-w-[760px] md:text-[clamp(3.2rem,7vw,6.6rem)]">Commercial real estate decisions,<br /><span className="text-bronze-light">made clearer.</span></h1>
+            <p className="mt-6 max-w-[350px] text-base leading-7 text-white/80 md:mt-7 md:max-w-xl md:text-lg md:leading-8"><span className="md:hidden">Independent commercial real estate guidance across Woodstock, North Metro Atlanta, and beyond.</span><span className="hidden md:inline">Independent guidance for owners, investors, tenants, and buyers navigating consequential real estate decisions across North Metro Atlanta and beyond.</span></p>
             <div className="mt-9 flex flex-wrap gap-3">
               <Link className="button button-light" href="/contact">Start a conversation <ArrowRight size={16} /></Link>
-              <Link className="button border-white/50 bg-transparent hover:border-bronze hover:bg-bronze" href="/properties">Explore our experience</Link>
+              <span className="hidden md:contents"><Link className="button border-white/50 bg-transparent hover:border-bronze hover:bg-bronze" href="/properties">Explore our experience</Link></span>
             </div>
           </div>
-          <div className="flex items-end justify-between gap-5 text-[.78rem] text-white/68">
+          <div className="hidden items-end justify-between gap-5 text-[.78rem] text-white/68 md:flex">
             <p>Brokerage · Site selection · Investment advisory</p>
-            <a href="#perspective" className="focus-ring hidden items-center gap-2 uppercase tracking-[.14em] sm:flex">Our perspective <ArrowDown size={15} /></a>
+            <a href="#perspective" className="focus-ring hidden items-center gap-2 uppercase tracking-[.14em] md:flex">Our perspective <ArrowDown size={15} /></a>
           </div>
         </div>
       </section>
