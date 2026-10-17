@@ -1,0 +1,4 @@
+import Link from "next/link";
+import { SetupForm } from "@/components/admin-auth-form";
+import { Logo } from "@/components/logo";
+export default function SetupPage(){return <main className="grid min-h-svh place-items-center px-4 py-12"><div className="w-full max-w-lg border border-black/10 bg-white p-7 sm:p-10"><Logo/><p className="eyebrow mt-10">One-time setup</p><h1 className="mt-5 font-[family-name:var(--font-display)] text-5xl font-medium leading-none">Create the first administrator.</h1><p className="mt-4 text-sm leading-7 text-muted">This uses the email and password already stored in the secure server environment. Enter the one-time setup token to provision that account. Once an administrator exists, this action is disabled.</p><SetupForm/><Link href="/admin/login" className="mt-7 block text-xs text-muted">Return to login</Link></div></main>}

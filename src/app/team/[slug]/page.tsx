@@ -1,0 +1,15 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowLeft, Check, Mail, MapPin, Phone } from "lucide-react";
+import { notFound } from "next/navigation";
+import { CtaBand } from "@/components/cta-band";
+import { team } from "@/lib/content";
+import { SITE } from "@/lib/site";
+
+export function generateStaticParams() { return team.map(({ slug }) => ({ slug })); }
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> { const { slug } = await params; const member = team.find((item)=>item.slug===slug); return member ? { title: member.name, description: member.summary, alternates: { canonical: `/team/${member.slug}` } } : { title: "Team member not found" }; }
+
+export default async function TeamDetail({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params; const member = team.find((item)=>item.slug===slug); if (!member) notFound();
+  return <><section className="bg-forest py-12 text-white md:py-20"><div className="container-shell"><Link href="/team" className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[.1em] text-bronze-light"><ArrowLeft size={14} />The team</Link><div className="mt-16 grid gap-9 md:grid-cols-[170px_1fr] md:items-end"><div className="grid aspect-square place-items-center bg-bronze font-[family-name:var(--font-display)] text-6xl text-forest">{member.name.split(" ").slice(0,2).map((part)=>part[0]).join("")}</div><div><p className="eyebrow">{member.title}</p><h1 className="display mt-6 text-[clamp(4rem,8vw,7.5rem)]">{member.name}</h1><p className="mt-5 flex items-center gap-2 text-sm text-white/60"><MapPin size={15} />{member.location}</p></div></div></div></section><section className="section"><div className="container-shell grid gap-12 lg:grid-cols-[1fr_340px]"><article><p className="eyebrow">Background</p><div className="mt-7 max-w-3xl space-y-5 text-lg leading-9 text-muted">{member.bio.map((paragraph)=><p key={paragraph}>{paragraph}</p>)}</div><h2 className="display mt-14 text-5xl">Areas of focus</h2><div className="mt-7 grid gap-x-8 sm:grid-cols-2">{member.focus.map((item)=><p key={item} className="flex gap-3 border-b hairline py-4 text-sm font-semibold"><Check className="mt-1 text-bronze" size={15} />{item}</p>)}</div>{member.credentials && <><h2 className="display mt-14 text-5xl">Credentials</h2><div className="mt-7 grid gap-x-8 sm:grid-cols-2">{member.credentials.map((item)=><p key={item} className="border-b hairline py-4 text-sm">{item}</p>)}</div></>}</article><aside className="h-fit bg-ivory p-7"><p className="eyebrow">Connect</p><p className="mt-6 text-sm leading-7 text-muted">Contact the Vision office to begin a conversation with {member.name.split(",")[0]}.</p><a className="mt-6 flex items-center gap-3 border-t hairline pt-5 text-sm font-semibold" href={SITE.phoneHref}><Phone size={16} className="text-bronze" />{SITE.phoneDisplay}</a><a className="mt-4 flex items-center gap-3 text-sm font-semibold" href={`mailto:${SITE.email}`}><Mail size={16} className="text-bronze" />Email Vision</a></aside></div></section><CtaBand /></>;
+}

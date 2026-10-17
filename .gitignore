@@ -12,6 +12,8 @@
 
 # testing
 /coverage
+/test-results/
+/playwright-report/
 
 # next.js
 /.next/
@@ -29,9 +31,13 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
+preview-out.log
+preview-err.log
+/public/images/vision-hero.png
 
-# env files (can opt-in for committing if needed)
+# env files (the documented example is safe to commit)
 .env*
+!.env.example
 
 # vercel
 .vercel
