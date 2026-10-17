@@ -4,7 +4,7 @@ export function SectionHeading({ eyebrow, title, body, light = false }: { eyebro
       <p className="eyebrow self-start">{eyebrow}</p>
       <div>
         <h2 className={`display text-[clamp(2.8rem,5.5vw,5.3rem)] ${light ? "text-ivory" : "text-forest"}`}>{title}</h2>
-        {body && <p className={`mt-6 max-w-2xl leading-8 ${light ? "text-white/65" : "text-muted"}`}>{body}</p>}
+        {body && <p className={`mt-6 max-w-2xl text-[1.02rem] leading-8 md:text-lg ${light ? "text-white/72" : "text-muted"}`}>{body}</p>}
       </div>
     </div>
   );

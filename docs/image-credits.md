@@ -5,6 +5,7 @@ Images are used as brand atmosphere and illustrative demonstration inventory. Th
 ## Original generated image
 
 - `public/images/vision-hero-grounded.png` — replacement AI-generated hero created through OpenAI's built-in image generation workflow on October 17, 2026. Prompt: “A grounded, believable established brick-and-stone professional building in a North Metro Atlanta or Woodstock setting; normal suburban business corridor, mature Georgia trees, practical surface parking, restrained natural photography, wide composition with left-side copy space; no branding or recognizable property; avoid futuristic, luxury, glass-campus, monumental, cinematic, or aspirational architecture.”
+- `public/images/woodstock-downtown.jpg` — “Downtown Woodstock, Georgia, December 2019 01” by Thomson200, sourced from Wikimedia Commons and dedicated to the public domain under CC0 1.0. Source: https://commons.wikimedia.org/wiki/File:Downtown_Woodstock,_Georgia,_December_2019_01.jpg
 
 ## Unsplash photography
 

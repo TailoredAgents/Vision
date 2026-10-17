@@ -9,18 +9,18 @@ export function Footer() {
       <div className="container-shell grid gap-12 py-16 md:grid-cols-[1.5fr_1fr_1fr] md:py-20">
         <div>
           <Logo light />
-          <p className="mt-7 max-w-sm text-sm leading-7 text-white/62">Independent commercial real estate guidance, rooted in Woodstock and serving North Metro Atlanta and the greater Atlanta market.</p>
+          <p className="mt-7 max-w-sm text-[.95rem] leading-7 text-white/70">Independent commercial real estate guidance, rooted in Woodstock and serving North Metro Atlanta and the greater Atlanta market.</p>
         </div>
         <div>
           <p className="text-xs font-bold uppercase tracking-[.15em] text-bronze-light">Explore</p>
-          <div className="mt-5 grid gap-2 text-sm text-white/70">
+          <div className="mt-5 grid gap-2 text-[.92rem] text-white/76">
             {mainNav.map((item) => <Link className="w-fit py-1 hover:text-bronze-light" key={item.href} href={item.href}>{item.label}</Link>)}
             <Link className="w-fit py-1 hover:text-bronze-light" href="/contact">Contact</Link>
           </div>
         </div>
         <div>
           <p className="text-xs font-bold uppercase tracking-[.15em] text-bronze-light">Connect</p>
-          <address className="mt-5 not-italic text-sm leading-7 text-white/70">
+          <address className="mt-5 not-italic text-[.92rem] leading-7 text-white/76">
             {SITE.address.street}<br />{SITE.address.city}, {SITE.address.region} {SITE.address.postalCode}<br />
             <a className="hover:text-bronze-light" href={SITE.phoneHref}>{SITE.phoneDisplay}</a><br />
             <a className="break-all hover:text-bronze-light" href={`mailto:${SITE.email}`}>{SITE.email}</a>

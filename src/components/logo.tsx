@@ -5,7 +5,7 @@ export function Logo({ light = false }: { light?: boolean }) {
   return (
     <Link
       href="/"
-      className={`focus-ring inline-flex shrink-0 items-center ${light ? "bg-white px-3 py-2" : ""}`}
+      className={`focus-ring inline-flex shrink-0 items-center ${light ? "border border-white/15 bg-white p-4 shadow-[0_12px_40px_rgba(0,0,0,.12)]" : ""}`}
       aria-label="Vision Commercial Advisors home"
     >
       <Image
@@ -14,7 +14,7 @@ export function Logo({ light = false }: { light?: boolean }) {
         width={635}
         height={288}
         priority
-        className="h-auto w-[166px] sm:w-[186px]"
+        className={`h-auto ${light ? "w-[188px]" : "w-[182px] sm:w-[210px]"}`}
       />
     </Link>
   );

@@ -10,7 +10,7 @@
   --ivory: #f5f1e8;
   --paper: #fbf9f4;
   --stone: #d8d2c5;
-  --muted: #68716b;
+  --muted: #56615b;
   --white: #fffefb;
 }
 
@@ -76,7 +76,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   align-items: center;
   gap: .7rem;
   color: var(--bronze);
-  font-size: .72rem;
+  font-size: .76rem;
   font-weight: 700;
   letter-spacing: .16em;
   line-height: 1.2;
@@ -94,7 +94,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   border: 1px solid var(--forest);
   background: var(--forest);
   color: var(--white);
-  font-size: .76rem;
+  font-size: .79rem;
   font-weight: 700;
   letter-spacing: .08em;
   text-transform: uppercase;
@@ -106,7 +106,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .button-light { background: var(--ivory); border-color: var(--ivory); color: var(--forest); }
 .button-light:hover { background: var(--bronze-light); border-color: var(--bronze-light); }
 
-.section { padding-block: clamp(4.5rem, 9vw, 8rem); }
+.section { padding-block: clamp(4.5rem, 8vw, 7.5rem); }
 .hairline { border-color: color-mix(in srgb, var(--ink) 18%, transparent); }
 
 .prose-vision h2, .prose-vision h3 {

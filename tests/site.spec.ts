@@ -20,19 +20,22 @@ test("public routes render one heading, canonical metadata, and no browser error
 
 test("home imagery loads as the page is explored", async ({ page }) => {
   await page.goto("/", { waitUntil: "networkidle" });
-  await page.locator("footer").scrollIntoViewIfNeeded();
-  await page.waitForTimeout(600);
+  const images = page.locator("img");
+  for (let index = 0; index < await images.count(); index += 1) {
+    const current = images.nth(index);
+    await current.scrollIntoViewIfNeeded();
+    await expect.poll(() => current.evaluate((image) => (image as HTMLImageElement).complete && (image as HTMLImageElement).naturalWidth > 0)).toBe(true);
+  }
   const failed = await page.locator("img").evaluateAll((images) => images.filter((image) => !(image as HTMLImageElement).complete || (image as HTMLImageElement).naturalWidth === 0).map((image) => (image as HTMLImageElement).src));
   expect(failed).toEqual([]);
 });
 
-test("property explorer filters without inventing live status", async ({ page }) => {
+test("properties page avoids presenting demonstration inventory as live", async ({ page }) => {
   await page.goto("/properties");
-  await expect(page.getByText("8 illustrative properties")).toBeVisible();
-  await page.locator("select").first().selectOption("Industrial");
-  await expect(page.getByText("2 illustrative properties")).toBeVisible();
-  await expect(page.getByText("North Georgia Logistics Center")).toBeVisible();
-  await expect(page.getByText("I-575 Commerce Park")).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Ask what is active now." })).toBeVisible();
+  await expect(page.getByText(/Current availability changes/)).toBeVisible();
+  await expect(page.getByText("Representative experience")).toBeVisible();
+  await expect(page.getByText("$1,425,000")).toHaveCount(0);
 });
 
 test("admin pages redirect unauthenticated visitors", async ({ page }) => {
